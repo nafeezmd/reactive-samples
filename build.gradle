@@ -28,6 +28,7 @@ dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
 	implementation('org.springframework.boot:spring-boot-starter-webflux')
 	compileOnly('org.projectlombok:lombok')
+	compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	testImplementation('io.projectreactor:reactor-test')
 }
