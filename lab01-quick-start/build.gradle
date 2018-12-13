@@ -1,17 +1,18 @@
 bootJar {
     baseName = 'lab01-quick-start'
-    version =  '0.1.0'
+    version =  '0.0.1'
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
 dependencies {
-	implementation('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
-	implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
-	implementation('org.springframework.boot:spring-boot-starter-webflux')
-	compileOnly('org.projectlombok:lombok')
+	compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.springframework.boot:spring-boot-starter-webflux')
+	compile('org.springframework.boot:spring-boot-starter-webflux')
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+
+	compile('org.projectlombok:lombok')
 	compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
-	testImplementation('org.springframework.boot:spring-boot-starter-test')
-	testImplementation('io.projectreactor:reactor-test')
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('io.projectreactor:reactor-test')
 }
