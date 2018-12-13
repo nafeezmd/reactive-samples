@@ -26,4 +26,11 @@ public class Chapter {
     this.name = name;
   }
 
+  @Override
+  public String toString() {
+    return "Chapter{" +
+        "id='" + id + '\'' +
+        ", name='" + name + '\'' +
+        '}';
+  }
 }
