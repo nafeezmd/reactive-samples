@@ -1,0 +1,6 @@
+# this shows the incoming requests with the headers and all
+logging:
+  level:
+    io:
+      netty: DEBUG
+    reactor: DEBUG
