@@ -1,4 +1,4 @@
-package com.labs.reactivesamples;
+package com.labs.reactive.springboot;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,7 +1,7 @@
-package com.labs.reactivesamples;
+package com.labs.reactive.springboot;
 
-import com.labs.reactivesamples.model.Chapter;
-import com.labs.reactivesamples.repository.ChapterRepository;
+import com.labs.reactive.springboot.model.Chapter;
+import com.labs.reactive.springboot.repository.ChapterRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

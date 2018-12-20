@@ -1,4 +1,4 @@
-package com.labs.reactivesamples.model;
+package com.labs.reactive.springboot.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

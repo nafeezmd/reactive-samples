@@ -1,6 +1,6 @@
 #Lab 01 - Quick start with Springboot 2.0
 
-Run the main application and try out the following:
+Run the com.labs.reactive.springboot.Application class in this module and try out the following:
 
 ```
 curl -X GET http://localhost:8080/chapters
@@ -29,7 +29,8 @@ This should give a response:
 ###Testing the Springboot actuator:
 
 With the `endpoints.health.enabled=true` in application.properties
-#####To get general details of your application, try:
+
+#####To get health info of your application, try:
 
 ```
 curl -X GET http://localhost:9000/application/health
@@ -67,3 +68,17 @@ For example, following would not work
 curl -X GET http://localhost:9000/application/metrics
 ```
 
+##Take aways:
+• ReacticeCrudRepository is the new **reactive** Spring Data CRUD repository. CrudRepository is blocking.
+
+• ReacticeCrudRepository extends Repository, a Spring Data's marker interface that signals Spring Data to create a concrete implementation based on
+ the reactive paradigm while also capturing domain information. It comes with some predefined CRUD operaitons. 
+
+• Spring Data **does not** engage in Code generation. Code generation has a sordid history of being out of data at some of
+ the worst times. (i.e you will not see a *ChapterRepositoryImpl.class* in your build directory)
+ 
+• Spring data uses proxies and other mechanisms to support these operations.
+
+• Spring Boot runs all CommandLineRunner beans after the entire application is up and running.
+
+• @TestPropertySource - play with this more

@@ -1,7 +1,7 @@
-package com.labs.reactivesamples.web;
+package com.labs.reactive.springboot.web;
 
-import com.labs.reactivesamples.model.Chapter;
-import com.labs.reactivesamples.repository.ChapterRepository;
+import com.labs.reactive.springboot.model.Chapter;
+import com.labs.reactive.springboot.repository.ChapterRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
