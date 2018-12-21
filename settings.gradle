@@ -2,4 +2,5 @@ rootProject.name = 'reactive-samples'
 
 include 'lab01-quick-start'
 include 'lab02-reactive-web-with-spring-boot'
+include 'lab03-reactive-data-access'
 
