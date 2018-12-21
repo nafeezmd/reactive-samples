@@ -1,0 +1,15 @@
+bootJar {
+    baseName = 'lab02-reactive-web-with-spring-boot'
+    version =  '0.0.1'
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('org.springframework.boot:spring-boot-starter-webflux')
+    compile('org.projectlombok:lombok')
+    compile('javax.servlet:servlet-api:3.0-alpha-1')
+
+    // supports reactive multipart file uploads
+    compile('org.synchronoss.cloud:nio-multipart-parser:1.1.0')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
