@@ -16,4 +16,5 @@ public class Lab03Application {
   public HiddenHttpMethodFilter hiddenHttpMethodFilter() {
     return new HiddenHttpMethodFilter(); // need this bean to make the Http DELETE methods work properly
   }
+
 }

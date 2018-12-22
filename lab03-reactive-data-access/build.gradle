@@ -1,0 +1,16 @@
+bootJar {
+    baseName = 'lab03-reactive-data-access'
+    version =  '0.0.1'
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('org.springframework.boot:spring-boot-starter-webflux')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+
+    compile('javax.servlet:servlet-api:3.0-alpha-1')
+    compile('org.projectlombok:lombok')
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

@@ -1,5 +1,6 @@
-package com.labs.reactive.springboot;
+package com.labs.reactive.springboot.controller;
 
+import com.labs.reactive.springboot.model.Image;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

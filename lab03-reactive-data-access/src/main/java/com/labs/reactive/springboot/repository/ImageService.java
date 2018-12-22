@@ -1,5 +1,6 @@
-package com.labs.reactive.springboot;
+package com.labs.reactive.springboot.repository;
 
+import com.labs.reactive.springboot.model.Image;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -23,9 +24,11 @@ public class ImageService {
   private static String UPLOAD_ROOT = "upload-dir";
 
   private final ResourceLoader resourceLoader;
+  private final ImageRepository imageRepository;
 
-  public ImageService(ResourceLoader resourceLoader) {
+  public ImageService(ResourceLoader resourceLoader, ImageRepository imageRepository) {
     this.resourceLoader = resourceLoader;
+    this.imageRepository = imageRepository;
   }
 
   @Bean
@@ -56,18 +59,42 @@ public class ImageService {
   }
 
   public Mono<Void> createImage(Flux<FilePart> files) {
-    return files.flatMap(file ->
-        file.transferTo(Paths.get(UPLOAD_ROOT, file.filename()).toFile())
-    ).then();
+    return files.flatMap(file -> {
+      Mono<Image> saveDatabaseImage = imageRepository.save(new Image(UUID.randomUUID().toString(), file.filename()));
+      Mono<Void> copyFile = Mono.just(Paths.get(UPLOAD_ROOT, file.filename()).toFile()).log("createImage-pickTarget")
+          .map(destFile -> {
+            try {
+              destFile.createNewFile();
+              return destFile;
+            } catch (IOException e) {
+              throw new RuntimeException(e);
+            }
+          })
+          .log("createImage-newFile")
+          .flatMap(file::transferTo)
+          .log("createImage-copy");
+
+      // combining all operations that need to happen
+      return Mono.when(saveDatabaseImage, copyFile);
+    }).then();
   }
 
   public Mono<Void> deleteImage(String fileName) {
-    return Mono.fromRunnable(() -> {
+    Mono<Void> deleteDatabaseImage = imageRepository
+        .findByName(fileName)
+        .log("deleteImage-find")
+        .flatMap(imageRepository::delete)
+        .log("deleteImage-record");
+    Mono<Void> deleteFile = Mono.fromRunnable(() -> {
       try {
         Files.deleteIfExists(Paths.get(UPLOAD_ROOT, fileName));
       } catch (IOException e) {
         throw new RuntimeException(e);
       }
     });
+    return Mono.when(deleteDatabaseImage, deleteFile)
+        .log("deleteImage-when")
+        .then()
+        .log("deleteImage-done");
   }
 }

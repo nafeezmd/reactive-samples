@@ -1,5 +1,6 @@
-package com.labs.reactive.springboot;
+package com.labs.reactive.springboot.controller;
 
+import com.labs.reactive.springboot.repository.ImageService;
 import java.io.IOException;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
