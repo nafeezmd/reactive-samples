@@ -1,6 +1,5 @@
 # this shows the incoming requests with the headers and all
-logging:
-  level:
-    io:
-      netty: DEBUG
-    reactor: DEBUG
+logging.level.com.labs.reactive.springboot: DEBUG
+logging.level.org.springframework.data: TRACE
+logging.level.reactor.core: TRACE
+logging.level.reactor.util: TRACE

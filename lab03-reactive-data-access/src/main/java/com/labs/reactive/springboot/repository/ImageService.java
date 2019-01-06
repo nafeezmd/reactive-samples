@@ -49,13 +49,7 @@ public class ImageService {
   }
 
   public Flux<Image> findAllImages() {
-    try {
-      return Flux.fromIterable(
-          Files.newDirectoryStream(Paths.get(UPLOAD_ROOT))
-      ).map(path -> new Image(UUID.randomUUID().toString(), path.getFileName().toString()));
-    } catch (IOException e) {
-      return Flux.empty();
-    }
+    return imageRepository.findAll();
   }
 
   public Mono<Void> createImage(Flux<FilePart> files) {
